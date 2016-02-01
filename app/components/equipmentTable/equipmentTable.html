@@ -1,0 +1,211 @@
+
+    
+<dom-module id="equipment-Table">
+  <template>
+
+    <div>
+      <paper-input type="text" label="Search" value="{{searchString::input}}" on-input="applyFilter"></paper-input>
+    </div>
+    <paper-datatable data="{{equipments}}"    resize-behavior="overflow" filter="{{computeFilter(searchString)}}">
+
+  <!-- /////////////////////////////////////////MAIN EQUIPMENT DATA///////////////////////////////////////////// -->
+
+      <!-- ********************************Function Location***************************************** -->
+      <paper-datatable-column  header="Function Location" align="center" resize-priority="-1" width="150" property="Floc" sortable ></paper-datatable-column>
+      <!-- ********************************SAP/Eqipment Number***************************************** -->
+      <paper-datatable-column header="SAP/Eqipment" align="center"  resize-priority="1" width="30" property="SAPID" sortable ></paper-datatable-column>
+
+      <!-- ********************************Equipment Type***************************************** -->
+      <paper-datatable-column header="Object Type" align="center"  resize-priority="-1" width="30" property="EType" sortable ></paper-datatable-column>
+
+
+      <!-- ********************************Plant Code***************************************** -->
+      <paper-datatable-column header="P Code" align="center"  resize-priority="-1" width="50" property="PCode" sortable ></paper-datatable-column>
+
+      <!-- ********************************Notificaiton Number***************************************** -->
+      <paper-datatable-column header="Notification" align="center"  resize-priority="-1" width="50" property="NoNumber" sortable ></paper-datatable-column>
+
+  <!-- /////////////////////////////////////////INSPECTION DATA///////////////////////////////////////////// -->
+
+      <!-- ********************************Planning***************************************** -->
+      <paper-datatable-column header="PL" align="center" resize-priority="-1" width="10" property="PL" sortable ></paper-datatable-column>
+ 
+      <!-- ********************************Assessment***************************************** -->
+      <paper-datatable-column header="AS" align="center" resize-priority="-1" width="10" property="AS" sortable ></paper-datatable-column>
+  
+      <!-- ********************************Inspection***************************************** -->
+      <paper-datatable-column header="INSP" align="center" resize-priority="-1" width="10"  property="INSP" sortable ></paper-datatable-column>
+          
+      <!-- ********************************CAD***************************************** -->
+      <paper-datatable-column header="CAD" align="center" resize-priority="-1" width="10" property="CAD" sortable ></paper-datatable-column>
+
+      <!-- ********************************Signatures***************************************** -->
+      <paper-datatable-column header="SIG" align="center" resize-priority="-1" width="10" property="SIG" sortable ></paper-datatable-column>
+
+      <!-- ********************************Equipment Number***************************************** -->
+      <paper-datatable-column header="END" align="center" resize-priority="-1" width="10" property="END" sortable ></paper-datatable-column>
+      <!-- <div> -->
+      <paper-datatable-column header="Edit" align="center" resize-priority="-1" width="10" edit-icon dialog sortable >
+        <template>
+          <paper-icon-button icon="search" on-click="addanother"></paper-icon-button>
+        </template>
+      </paper-datatable-column>
+      <!-- <paper-icon-button icon="datatable:editable" on-tap="editDialogForSelected"></paper-icon-button> -->
+      <!-- </div> -->
+    </paper-datatable>
+  </template>
+</dom-module>    
+
+<script>
+
+  Polymer({
+    is: "equipment-Table",
+
+      computeFilter: function (string) {
+      
+        if (!string) {
+          // set filter to null to disable filtering
+          return null;
+        } else {
+
+          // return a filter function for the current search string
+          string = string.toLowerCase();
+
+
+           return function (item) {
+            
+            var first = item.Floc.toLowerCase();
+            var last = item.NoNumber.toLowerCase();
+            return (first.indexOf(string) != -1 ||
+                last.indexOf(string) != -1);
+          };
+        }
+      },
+
+      properties: {
+        equipments: {
+          type: Array,
+          value: function() {
+            return  [
+            {
+            id: 0, 
+            'SAPID': '123456789',
+            'Floc': 'E124-125468-ASDFGB-B2700EDDVDS-23',
+            'NoNumber': '1000026501',
+            'PCode':'E123',
+            'PL': 'X',
+            'AS': 'X',
+            'INSP':'',
+            'CAD': '',
+            'SIG':'X',
+            'END':''
+          },
+          {
+            id: 1, 
+            'SAPID': '123456789',
+            'Floc': 'E123-125468-ASDFGB-B2700EDCVDS-23',
+            'NoNumber': '1000026501',
+            'PCode':'E123',
+            'PL': 'X',
+            'AS': 'X',
+            'INSP':'',
+            'CAD': '',
+            'SIG':'X',
+            'END':''
+          },
+          {
+            id: 2, 
+            'SAPID': '123456789',
+            'Floc': 'E123-125468-ASDFGB-B2700EDCVDS-23',
+            'NoNumber': '1000026501',
+            'PCode':'E123',
+            'PL': 'X',
+            'AS': 'X',
+            'INSP':'',
+            'CAD': '',
+            'SIG':'X',
+            'END':''
+          },
+          {
+            id: 3, 
+            'SAPID': '123456789',
+            'Floc': 'E123-125468-ASDFGB-B2700EDCVDS-23',
+            'NoNumber': '1000026501',
+            'PCode':'E123',
+            'PL': 'X',
+            'AS': 'X',
+            'INSP':'',
+            'CAD': '',
+            'SIG':'X',
+            'END':''
+          },
+          {
+            id: 4, 
+            'SAPID': '123456789',
+            'Floc': 'E123-125468-ASDFGB-B2700EDCVDS-23',
+            'NoNumber': '1000026501',
+            'PCode':'E123',
+            'PL': 'X',
+            'AS': 'X',
+            'INSP':'',
+            'CAD': '',
+            'SIG':'X',
+            'END':''
+          },
+          {
+            id: 5, 
+            'SAPID': '123456789',
+            'Floc': 'E123-125468-ASDFGB-B2700EDCVDS-23',
+            'NoNumber': '1000026501',
+            'PCode':'E123',
+            'PL': 'X',
+            'AS': 'X',
+            'INSP':'',
+            'CAD': '',
+            'SIG':'X',
+            'END':''
+          }
+          ]}
+        }
+      },
+
+      applyFilter:  function(){
+        datatable.reload();
+      },
+
+
+
+    ready:function(){},
+
+    order: function(e){
+      var model = e.model;
+      model.set('item.PCode','E456')
+
+
+    },
+
+    addanother: function() {
+    this.push('equipments', {
+        id: 6, 
+        'SAPID': '123456789',
+        'Floc': 'E123-125468-ASDFGB-B2700EDCVDS-23',
+        'NoNumber': '1000026501',
+        'PCode':'E123',
+        'PL': 'X',
+        'AS': 'X',
+        'INSP':'',
+        'CAD': '',
+        'SIG':'X',
+        'END':''
+      })
+    }
+
+    
+
+
+
+
+  });
+</script>
+
+
