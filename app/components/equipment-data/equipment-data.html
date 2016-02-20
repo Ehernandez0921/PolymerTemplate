@@ -1,0 +1,33 @@
+<dom-module id="equipment-data">
+    <template>    
+        <iron-ajax id="ajaxequipmentdata"
+            auto
+            url="equipment-data.json"
+            handle-as="json"
+            on-response="_onajaxresponse"
+            last-response = "{{ajaxResponse}}"
+        ></iron-ajax>
+        
+            <template is="dom-repeat" items="{{ajaxResponse}}" filter="filterEquipment">      
+            <div>Equipment ID:<span>{{item.id}}</span>  Equipment Description:<span>{{item.description}}</span></div>
+            </template>
+        
+    </template>
+</dom-module>    
+<script>
+  Polymer({
+    is: "equipment-data",
+    
+    ready:function(){
+        
+    },
+    _onajaxresponse:function(e){
+        console.log('Information connected',e.detail.response)
+    },
+    filterEquipment:function(item){
+        return item.id == '101456780';
+    }
+  });
+</script>
+
+
