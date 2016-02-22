@@ -1,0 +1,28 @@
+[
+    {
+        "component":"Nozzle",
+        "object":"tank" 
+    },
+    {
+        "component":"Head",
+        "object":"tank" 
+    },
+    {
+        "component":"Shell",
+        "object":"tank" 
+    },
+    {
+        "component":"Primary",
+        "object":"piping" 
+    },
+    {
+        "component":"Shell",
+        "object":"vessel" 
+    },
+    {
+        "component":"tubes",
+        "object":"vessel" 
+    }
+] 
+
+    

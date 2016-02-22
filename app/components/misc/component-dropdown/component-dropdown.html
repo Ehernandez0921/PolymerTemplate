@@ -1,0 +1,42 @@
+<!--Start the module-->
+<dom-module id="component-dropdown">
+<!--Initiate Template-->
+    <template>    
+    <!--Call the data through iron-ajax from the table change to database-->
+        <iron-ajax id="ajaxcomponentdropdown"
+            auto
+            url="component-dropdown.json"
+            handle-as="json"
+            on-response="_onajaxresponse"
+            last-response = "{{ajaxResponse}}"
+        ></iron-ajax>
+        <!--Start the equipment template filtered by filterEquipment need to pass variable from table-->
+            <div>   
+                <paper-dropdown-menu label="Component">
+                    <paper-listbox class="dropdown-content">
+                        <template is="dom-repeat" items="{{ajaxResponse}}" filter="filtercomponent">
+                            <paper-item>{{item.component}}</paper-item>
+                        </template>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+                <paper-button raised>Add</paper-button>                
+            </div>
+    </template>
+</dom-module>    
+<script>
+  Polymer({
+    is: "component-dropdown",
+    ready:function(){
+        
+    },
+    _onajaxresponse:function(e){
+        console.log('Information connected',e.detail.response)
+    },
+    filtercomponent:function(item, varobject){
+        return item.object == varobject;
+    }
+  });
+</script>
+
+
+
